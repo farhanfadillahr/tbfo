@@ -9,7 +9,7 @@ file_path = './' + input_file
 file = open(file_path, 'r')
 text = file.read()
 import os.path
-import grammarConverter as grammar_converter
+import grammar as convert
 
 
 class Node:
@@ -49,10 +49,10 @@ class Parser:
         print("Closing parser...")
 
     def grammar_from_file(self, grammar):
-        self.grammar = grammar_converter.convert_grammar(grammar_converter.read_grammar(grammar))
+        self.grammar = convert.convert_grammar(convert.read_grammar(grammar))
 
     def grammar_from_string(self, grammar):
-        self.grammar = grammar_converter.convert_grammar([x.replace("->", "").split() for x in grammar.split("\n")])
+        self.grammar = convert.convert_grammar([x.replace("->", "").split() for x in grammar.split("\n")])
 
     def parse(self):
         length = len(self.input)
